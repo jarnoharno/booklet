@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import sys
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -15,9 +15,9 @@ def booklet(in_file, out_file):
     in_pdf = PdfFileReader(open(in_file, 'rb'))
     out_pdf = PdfFileWriter()
 
-    n = in_pdf.numPages / 2
-    for i in xrange(n):
-        print 'page {}/{}'.format(i+1,n)
+    n = in_pdf.numPages // 2
+    for i in range(n):
+        print('page {}/{}'.format(i+1,n))
         a = i
         b = 2*n - i - 1
         if i % 2 == 0:
@@ -39,6 +39,6 @@ def booklet(in_file, out_file):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print('usage: python2 booklet.py <in_file> <out_file>')
+        print('usage: python3 booklet.py <in_file> <out_file>')
         sys.exit(1)
     booklet(*sys.argv[1:])
